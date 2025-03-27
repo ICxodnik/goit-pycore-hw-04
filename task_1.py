@@ -3,8 +3,13 @@ from pathlib import Path
 FILENAME = Path(__file__).parent / "task_1_data.txt"
 
 def total_salary(items):
+    size = len(items) if items else 0
+
+    if(size == 0):
+        return 0, 0
+    
     total = sum(items)
-    average = total / len(items)
+    average = total / size
     return total, average
     
 def parseFile(filename):
