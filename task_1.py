@@ -15,19 +15,27 @@ def total_salary(items):
 def parseFile(filename):
     try:
         with open(filename, 'r', encoding='utf-8') as file:
-            lines = [el.strip().split(",")[1] for el in file.readlines()]
-            int_lines = list(map(int, lines))
+            int_lines = []
+            for line in file:
+                parts = line.strip().split(",")
+                if len(parts) == 2:  # Переконуємося, що є два елементи
+                    try:
+                        int_lines.append(int(parts[1]))
+                    except ValueError:
+                        print(f"Помилка перетворення в число: {parts[1]}")
+                else:
+                    print(f"Некоректний рядок (пропускаємо): {line.strip()}")
             return int_lines
     except FileNotFoundError:
         print("Файл не знайдено.")
-        return None
+        return []
     except Exception as e:
         print(f"Помилка: {e}")
-        return None
+        return []
 
 if __name__ == '__main__':
     items = parseFile(FILENAME)
 
     total, average = total_salary(items)
 
-    print(total, average)
+    print(f"Загальна сума зарплат: {total}, Середня зарплата: {average}")
