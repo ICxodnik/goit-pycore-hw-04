@@ -1,6 +1,6 @@
 from pathlib import Path
 
-FILENAME = Path(__file__).parent / "task_1_data.txt"
+FILENAME = Path(__file__).parent / "data" / "task_1_data.txt"
 
 def total_salary(items):
     size = len(items) if items else 0

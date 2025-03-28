@@ -1,6 +1,6 @@
 from pathlib import Path
 
-FILENAME = Path(__file__).parent / "task_2_data.txt"
+FILENAME = Path(__file__).parent / "data" / "task_2_data.txt"
 
 def get_cats_info(string_data: str):
     cats_lines = []
